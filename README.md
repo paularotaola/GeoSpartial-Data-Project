@@ -1,7 +1,6 @@
 # GeoSpartial-Data-Project
 
-("Input/Geospatial.jpg")
-
+![alt imagen](Input/Geospatial.jpg)
 ## Overview
 
 The goal of this project is to find the best location for a new office by cleaning and filtering a database of company locations.
