@@ -1,22 +1,19 @@
 # GeoSpartial-Data-Project
 
+("Input/Geospatial.jpg")
 
-## TODO's
-​
-You recently created a new company in the `GAMING industry`. The company will have the following scheme:
-​
-- 20 Designers
-- 5 UI/UX Engineers
-- 10 Frontend Developers
-- 15 Data Engineers
-- 5 Backend Developers
-- 20 Account Managers
-- 1 Maintenance guy that loves basketball
-- 10 Executives
-- 1 CEO/President
-​
-As a data engineer you have asked all the employees to show their preferences on where to place the new office. Your goal is to place the **new company offices** in the best place for the company to grow. You have to found a place that more or less covers all the following requirements. Note that **it's impossible to cover all requirements**, so you have to prioritize at your glance.
-​
+## Overview
+
+The goal of this project is to find the best location for a new office by cleaning and filtering a database of company locations.
+
+
+## Context. 
+
+
+Our CEO is planning to expand to a new country. He has chosen Singapore as it is considered a great country for starting a tech company.
+
+We have asked all the employees to show their preferences on where to place the new office. These were the results:
+
 - Designers like to go to design talks and share knowledge. There must be some nearby companies that also do design.
 - 30% of the company have at least 1 child.
 - Developers like to be near successful tech startups that have raised at least 1 Million dollars.
@@ -26,19 +23,23 @@ As a data engineer you have asked all the employees to show their preferences on
 - The CEO is Vegan
 - If you want to make the maintenance guy happy, a basketball stadium must be around 10 Km.
 - The office dog "Pepe" needs a hairdresser every month. Ensure there's one not too far away.
-​
-## Help
-​
-- Always use standard GeoJSON Point `{ type: "Point", coordinates: [ 40, 5 ] }`
-- Create sphere2d index in python with pymongo: `db.collection.createIndex( { <location field> : "2dsphere" } )`
-- MongoDB `$near` operator: <https://docs.mongodb.com/manual/reference/operator/query/near/#op._S_near>
-​
-## How to deliver the project
-​
-- Create a new repo in your github account.
-- Do a PR with the link of your repo copy pasted inside `m2/geospartial-data-project/REAMDE.md` on our labs repo.
-- You must justify your decision with a map, use visualization tools like (tableau, folium, cartoframes, etc.)
-- Provide `lat` and `long` for the new office proposals.
+
+The goal is to place the **new office** in the best place for the company to grow. 
+
+### Analysis schema
+
+Based on the employees preferences the scoring will be based on the relevance of the prerequisites, as we consider some more important than others.
+
+- Very important: Will be counted as double (x2)
+- Medium importance: Will count as one (x1)
+- Low importance: will be counted as half (x0.5)
+
+Additionally, each location will be weighted based on the number of people affected by the decision. The preferred location will be the one with a highest score.
+
+### Result
+
+The location with the highest score will be visualized in a map with the spots located nearby in order to be presented to the CEO.
+
 ​
 ## Links & Resources
 ​
